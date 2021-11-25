@@ -4,82 +4,49 @@ namespace App\Http\Controllers;
 
 use App\Models\categorias;
 use Illuminate\Http\Request;
+use inertia\inertia; 
 
 class CategoriasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    
+    public function index(Request $request)
     {
-        //
+        $catprod = categorias::get();
+        return Inertia::render('Categorias',['categorias'=>$catprod]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function index2(Request $request)
     {
-        //
+        $catprod = categorias::get();
+        return ['categoria'=>$catprod];
+    }   
+   
+    public function getData(Request $request)
+    {
+        $buscar=$request->idBuscar;
+        $reg = categorias::select('id','name')->OrderBy('name','asc')->get();
+        return ['catprod'=>$reg];
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
-        //
+        $catpro = new categorias;
+        $catpro->name = $request->name;
+        $catpro->save();
+    }
+        
+
+    public function update(Request $request)
+    {
+        $catpro = categorias::find($request->id);
+        $catpro->name = $request->name;
+        $catpro->save();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\categorias  $categorias
-     * @return \Illuminate\Http\Response
-     */
-    public function show(categorias $categorias)
+   
+    public function destroy(Request $request)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\categorias  $categorias
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(categorias $categorias)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\categorias  $categorias
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, categorias $categorias)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\categorias  $categorias
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(categorias $categorias)
-    {
-        //
+        $catprod = categorias::findOrFail($request->id);
+        $catprod->delete();
     }
 }

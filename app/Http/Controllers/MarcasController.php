@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\marcas;
 use Illuminate\Http\Request;
+use inertia\inertia;
 
 class MarcasController extends Controller
 {

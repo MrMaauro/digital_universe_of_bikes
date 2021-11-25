@@ -22,7 +22,15 @@
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Inicio
                                 </jet-nav-link>
+                               <jet-nav-link :href="route('categorias')" :active="route().current('categorias')">
+                                    Categoría
+                                </jet-nav-link>
+                                <jet-nav-link :href="route('productos')" :active="route().current('productos')">
+                                    Productos
+                                </jet-nav-link>
                             </div>
+
+                             
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">

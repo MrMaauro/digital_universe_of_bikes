@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\facturas;
 use Illuminate\Http\Request;
+use inertia\inertia;
 
 class FacturasController extends Controller
 {

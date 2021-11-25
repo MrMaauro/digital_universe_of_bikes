@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\det_facturas;
 use Illuminate\Http\Request;
+use inertia\inertia;
 
 class DetFacturasController extends Controller
 {
@@ -14,7 +15,7 @@ class DetFacturasController extends Controller
      */
     public function index()
     {
-        //
+      //
     }
 
     /**
