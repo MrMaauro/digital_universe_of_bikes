@@ -1,8 +1,8 @@
 <template>
     <app-layout title="Producto">
         <template #header>
-            <h2 class="text-center font-semibold text-xl text-pink-800 leading-tight">
-                Gestion de Productos
+            <h2 class="text-center font-semibold text-xl text-green-800 leading-tight">
+                Productos Almacenados
             </h2>
         </template>
         <div class="overflow-x-auto">
@@ -11,7 +11,7 @@
                     <div class="bg-white shadow-md rounded my-6" v-if="modal==false">
                         <table class="min-w-max w-full table-auto">
                             <thead>
-                                <tr class="bg-pink-100 text-pink-900 uppercase text-sm leading-normal">
+                                <tr class="bg-green-100 text-green-900 uppercase text-sm leading-normal">
                                     <th class="py-3 px-6 text-left">Producto</th>
                                     <th class="py-3 px-6 text-left">Descripción</th>
                                     <th class="py-3 px-6 text-left">Categoría</th>
@@ -24,17 +24,17 @@
                                 <tr v-for="(object, index) in arrayDatos" :key="index" class="border-b border-blue-100 hover:bg-gray-100">
                                     <td class="py-3 px-6 text-left">
                                         <div class="flex items-center">
-                                            <span>{{ object.product }}</span>
+                                            <span>{{ object.Producto }}</span>
                                         </div>
                                     </td>
                                     <td class="py-3 px-6 text-left">
                                         <div class="flex items-center">
-                                            <span>{{ object.description }}</span>
+                                            <span>{{ object.Descripción }}</span>
                                         </div>
                                     </td>
                                     <td class="py-3 px-6 text-left">
                                         <div class="flex items-center">
-                                            <span>{{ object.category }}</span>
+                                            <span>{{ object.Categorías }}</span>
                                         </div>
                                     </td>
                                     <td class="py-3 px-6 text-left">
@@ -71,11 +71,11 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div class="bg-pink-100 overflow-hidden shadow-x2">
+                        <div class="bg-white-100 overflow-hidden shadow-x2">
                             <button
                                 @click="abrirModal"
                                 type="button"
-                                class="border border-pink-600 bg-pink-700 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-pink-500 focus:outline-none focus:shadow-outline"
+                                class="border border-blue-600 bg-blue-700 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-500 focus:outline-none focus:shadow-outline"
                             >
                                 Nuevo Producto
                             </button>
@@ -84,36 +84,36 @@
                     <!-- Modal -->
                     <div class="flex justify items-top bg-red-50 antialiased" v-if="modal==true">                
                         <div class="flex flex-col w-11/12 sm:w-5/6 lg:w-1/2 max-w-2xl mx-auto rounded-lg border border-gray-300 shadow-xl">
-                            <div class="flex flex-row justify-between p-6 bg-pink-200 border-b border-gray-200 rounded-tl-lg rounded-tr-lg">
-                                <p class="font-semibold text-pink-900">{{titulo}}</p>
-                                <button @click="cerrarModal" class="px-4 py-2 text-white font-semibold bg-pink-800 uppercase  rounded">X</button>
+                            <div class="flex flex-row justify-between p-6 bg-green-200 border-b border-gray-200 rounded-tl-lg rounded-tr-lg">
+                                <p class="font-semibold text-green-900">{{titulo}}</p>
+                                <button @click="cerrarModal" class="px-4 py-2 text-white font-semibold bg-green-800 uppercase  rounded">X</button>
                             </div>
-                            <div class="flex flex-col px-6 py-5 bg-pink-50">
+                            <div class="flex flex-col px-6 py-5 bg-green-50">
                                 <div class="mb-3 space-y-2 w-full">
-                                    <label class="text-pink-700 select-none font-medium">Producto</label>
+                                    <label class="text-green-700 select-none font-medium">Producto</label>
                                     <input v-model="nombre" placeholder="Ingrese Producto" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border border-gray-300 rounded text-gray-600 h-10 pl-5 pr-10" required="required" type="text" name="integration[shop_name]" id="integration_shop_name">
                                     <p class="text-red text-xs hidden">Please fill out this field.</p>
                                 </div>
                                 <div class="mb-3 space-y-2 w-full">
-                                    <label class="text-pink-700 select-none font-medium">Descripción</label>
+                                    <label class="text-green-700 select-none font-medium">Descripción</label>
                                     <textarea v-model="desc" p-5 mb-5 placeholder="Ingrese descripción del Producto" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border border-gray-300 rounded text-gray-600 h-10 pl-5 pr-10" required="required" type="text" name="integration[shop_name]" id="integration_shop_name">
                                     </textarea>
                                 </div>
-                                <label for="default" class="text-pink-700 select-none font-medium">Categoría</label>
+                                <label for="default" class="text-green-700 select-none font-medium">Categoría</label>
                                 <select v-model="idCategoria" class="border border-gray-300 rounded text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none">
                                     <option v-for="item in arrayCategoria" :key="item.id" :value="item.id">{{ item.name }}</option>
                                 </select>
                                 <div class="mb-3 space-y-2 w-full">
-                                    <label class="text-pink-700 select-none font-medium">Precio</label>
+                                    <label class="text-green-700 select-none font-medium">Precio</label>
                                     <input v-model="Precio" placeholder="Ingrese Precio por Unidad" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border border-gray-300 rounded text-gray-600 h-10 pl-5 pr-10" required="required" type="text" name="integration[shop_name]" id="integration_shop_name">
                                     <p class="text-red text-xs hidden">Please fill out this field.</p>
                                 </div>
                                 <div class="mb-3 space-y-2 w-full">
-                                    <label class="text-pink-700 select-none font-medium">Imagen</label>
+                                    <label class="text-green-700 select-none font-medium">Imagen</label>
                                     <input v-model="Ruta" placeholder="Ingrese ruta imagen" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border border-gray-300 rounded text-gray-600 h-10 pl-5 pr-10" required="required" type="text" name="integration[shop_name]" id="integration_shop_name">
                                     <p class="text-red text-xs hidden">Please fill out this field.</p>
                                 </div>
-                                <label for="default" class="text-gray-700 select-none font-medium">Seleccione un estado</label>
+                                <label for="default" class="text-green-700 select-none font-medium">Seleccione un estado</label>
                                 <select v-model="edo" class="border border-gray-300 rounded text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none">
                                     <option value="0">Disponible</option>
                                     <option value="1">NO Disponible</option>
