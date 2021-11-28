@@ -29,6 +29,7 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+
 //Rutas inicio pag principal
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -55,4 +56,3 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/api/producto/registrar',
 Route::middleware(['auth:sanctum', 'verified'])->put('/api/producto/actualizar',[ProductosController::class, 'update']);
 Route::middleware(['auth:sanctum', 'verified'])->post('/api/producto/eliminar',[ProductosController::class, 'destroy']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/api/producto/getdata',[ProductosController::class, 'getdata']);
-
